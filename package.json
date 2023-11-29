@@ -1,0 +1,24 @@
+{
+  "name": "web-dev-final-package",
+  "version": "1.0.0",
+  "description": "package.json for chess web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MilosPetrovic4/web-dev-final.git"
+  },
+  "author": "Milos Petrovic",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  },
+  "bugs": {
+    "url": "https://github.com/MilosPetrovic4/web-dev-final/issues"
+  },
+  "homepage": "https://github.com/MilosPetrovic4/web-dev-final#readme"
+}
