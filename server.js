@@ -1,23 +1,19 @@
 
 const express = require('express')
-//const logger = require('morgan')
+const logger = require('morgan')
 
 const app = express() 
 const PORT = process.env.PORT || 3000
-const ROOT_DIR = '/public' //root directory for our static pages
+const ROOT_DIR = '/html' //root directory for our static pages
 
 
-//app.use( logger('dev'))
+app.use(logger('dev'))
 
-app.use(express.static(__dirname + ROOT_DIR)) 
-
-
+app.use(express.static(__dirname + ROOT_DIR)) //tells express to serve static files from html folder 
 
 app.use((req,res)=>{
   res.status(404).send('404: OOPS YOU BROKE THE INTERNET')
 })
-
-
 
 app.listen(PORT, err => {
     if(err) console.log(err)
