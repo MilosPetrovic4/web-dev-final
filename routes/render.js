@@ -19,16 +19,13 @@ exports.authenticate = function (request, response, next) {
 }
 
 exports.login = function (request, response) {
-    console.log("LOGIN PAGE")
-    response.render('credentials', { title: 'LOGIN', body: 'credentials:', buttonText: 'Log In', script: 'loginScript'});
+    response.render('login', { title: 'LOGIN', body: 'credentials:', buttonText: 'Log In'});
 }
 
 exports.register = function (request, response) {
-    console.log("REGISTATION PAGE")
-    response.render('credentials', { title: 'REGISTER', body: 'credentials:', buttonText: 'Register Info', script: 'registerScript'});
+    response.render('register', { title: 'REGISTER', body: 'credentials:', buttonText: 'Register'});
 }
 
 exports.home = function (request, response) {
-    // index.html
     response.render('index', { title: 'COMP 2406', body: 'rendered with handlebars'});
 }

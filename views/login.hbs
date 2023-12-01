@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title> {{title}} </title>
+</head>
+<body>
+   <h1>{{title}}</h1>
+   <h2>{{body}}</h2>         
+
+
+  <form id = "loginInfo "action="/submit" method="POST">
+    <label for="textInput">Enter Text:</label><br>
+    <input type="text" id="InputNAME" name = "InputNAME"><br><br>
+    <input type="text" id="InputPSW" name = "InputPSW"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+   <script>
+
+
+        submitButton.addEventListener('click', function() {            
+          console.log("login")
+        });
+
+    </script>
+</body>
+</html>
