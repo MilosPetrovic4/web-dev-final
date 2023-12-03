@@ -1,3 +1,6 @@
+var sqlite3 = require('sqlite3').verbose(); //verbose provides more detailed stack trace
+var db = new sqlite3.Database('database/chess_db');
+
 
 const express = require('express')
 const bodyParser = require('body-parser');
@@ -31,6 +34,30 @@ app.post('/submit', function(req, res){
     console.log(username)
     console.log(password)
 })
+
+app.post('/checkDB', function (req, res) {
+
+    var authorized = false
+    //check database users table for user
+    db.all("SELECT username, password, access FROM users", function(err, rows) {
+
+        
+
+      for (var i = 0; i < rows.length; i++) {
+        if (rows[i].username == req.body.id & rows[i].password == req.body.psw) {
+          authorized = true
+          user_role = rows[i].role;
+        }
+
+        
+        console.log(req.body.id)
+        console.log(req.body.psw)
+      }
+    })
+
+    console.log(authorized)
+})
+
 
 app.listen(PORT, err => {
     if(err) console.log(err)

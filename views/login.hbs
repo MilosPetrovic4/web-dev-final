@@ -8,19 +8,30 @@
    <h2>{{body}}</h2>         
 
 
-  <form id = "loginInfo "action="/submit" method="POST">
-    <label for="textInput">Enter Text:</label><br>
-    <input type="text" id="InputNAME" name = "InputNAME"><br><br>
-    <input type="text" id="InputPSW" name = "InputPSW"><br><br>
-    <input type="submit" value="Submit">
-  </form>
+    <input type="text" id="username" name="username"><br><br>
+    <input type="password" id="psw" name="psw"><br><br>
+    <button type="submit", id = "logInButton">{{buttonText}}</button>
 
    <script>
 
+      var submitButton = document.getElementById('logInButton');
+      var idLabel = document.getElementById('username');
+      var pswLabel = document.getElementById('psw');
 
-        submitButton.addEventListener('click', function() {            
-          console.log("login")
-        });
+      submitButton.addEventListener('click', function() {
+
+        //gets user input
+        var id = idLabel.value
+        var psw = pswLabel.value
+
+        const response = fetch('/checkDB', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id, psw })
+          });
+    });
 
     </script>
 </body>

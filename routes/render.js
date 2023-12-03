@@ -18,6 +18,7 @@ exports.authenticate = function (request, response, next) {
 
 }
 
+
 exports.login = function (request, response) {
     response.render('login', { title: 'LOGIN', body: 'credentials:', buttonText: 'Log In'});
 }
@@ -27,5 +28,5 @@ exports.register = function (request, response) {
 }
 
 exports.home = function (request, response) {
-    response.render('index', { title: 'COMP 2406', body: 'rendered with handlebars'});
+    response.render('index', { title: 'COMP 2406', body: 'rendered with handlebars', buttonText: 'buh'});
 }
