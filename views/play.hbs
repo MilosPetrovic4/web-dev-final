@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
+</head>
+<body>
+  <div class = "seven">
+    <a href="#" id="titleLink">
+      <h1>{{title}}</h1>
+    </a>
+  </div>
+   <h2>{{question}}</h2>       
+
+
+    <button type="submit", class="button-55", id = "answer_one">{{option1}}</button>
+    <button type="submit", class="button-55", id = "answer_two">{{option2}}</button>
+    <button type="submit", class="button-55", id = "answer_three">{{option3}}</button>
+    <button type="submit", class="button-55", id = "answer_four">{{option4}}</button>
+
+
+    <script>
+        const titleLink = document.getElementById('titleLink');
+
+        titleLink.addEventListener('click', function(event) {
+          event.preventDefault(); 
+          window.location.href = '/home'
+        });
+
+        correctAnswer = true
+
+        //event listeners
+        document.getElementById('answer_one').addEventListener('click', checkCorrect);
+        document.getElementById('answer_two').addEventListener('click', checkCorrect);
+        document.getElementById('answer_three').addEventListener('click', checkCorrect);
+        document.getElementById('answer_four').addEventListener('click', checkCorrect);
+
+
+        function checkCorrect() { //checks if user got the correct answer
+          if (this.textContent.localeCompare("{{correct}}") == 0) { //compares chosen answer to the correct answer
+            
+            this.style.backgroundColor = 'green';
+            let qdata = {value: correctAnswer} //send if correct or not
+            
+            fetch('/questionAnswered', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(qdata)
+            }).then(response => {
+                // Handle the response if needed
+                console.log('Data sent successfully');
+              })
+
+            setTimeout(() => { 
+
+              window.location.href = '/play'; //load a new question
+            }, 1000);
+          } else {
+            this.style.backgroundColor = 'red'
+            correctAnswer = false
+          }
+        }
+    </script>
+  
+</body>
+</html>

@@ -2,13 +2,18 @@
 <html>
 <head> 
   <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
 </head>
 <body>
-   <h1>{{title}}</h1>
+    <div class = "seven">
+      <h1>{{title}}</h1>
+    </div>   
+   
    <h2>{{body}}</h2>         
 
-   <button type="submit", id = "logInButton">{{buttonText}}</button>
-   <button id="registerButton">{{buttonText2}}</button>
+   <button type="submit", class="button-55", id = "logInButton">{{buttonText}}</button>
+   <button id="registerButton" class="button-55">{{buttonText2}}</button>
 
    <script>
         // Event listener for Log In Button

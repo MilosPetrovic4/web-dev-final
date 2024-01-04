@@ -2,19 +2,55 @@
 <html>
 <head> 
   <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
 </head>
 <body>
-   <h1>{{title}}</h1>
+   <div class = "seven">
+      <h1>{{title}}</h1>
+    </div>   
    <h2>{{body}}</h2>         
 
+   <input type="text" id="username" name="username"><br><br>
+   <input type="password" id="psw" name="psw"><br><br>
    <button type="submit", id = "submitButton">{{buttonText}}</button>
 
    <script>
         // Event listener for Log In Button
         const submitButton = document.getElementById('submitButton');
+        var idLabel = document.getElementById('username');
+        var pswLabel = document.getElementById('psw');
+
+
         submitButton.addEventListener('click', function() {
-          console.log("register")
+
+          //gets user input
+          var id = idLabel.value
+          var psw = pswLabel.value
+
+          console.log(id)
+          console.log(psw)
+
+            
+          const response = fetch('/registerUser', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+              name: id, 
+              password: psw  
+              })
+          }) .then(response => {
+        
+              if (response.ok) { //check response
+                  window.location.href = '/home';
+              } 
+          })
+
+          
         });
+        
 
     </script>
 </body>

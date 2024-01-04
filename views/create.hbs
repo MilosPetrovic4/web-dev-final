@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
+</head>
+<body>
+   <div class = "seven">
+    <a href="#" id="titleLink">
+      <h1>{{title}}</h1>
+    </a>
+  </div>
+   <h2>{{body}}</h2>       
+
+    
+    <label for="question">Question:</label>
+    <input type="text" id="question" name=" question">
+    <br>
+    <label for="correct">Correct:</label>
+    <input type="text" id="correct" name="correct">
+    <br>
+    <label for="correct">Option:</label>
+    <input type="text" id="option2" name="option2">
+    <br>
+    <label for="option3">Option:</label>
+    <input type="text" id="option3" name="option3">
+    <br>
+    <label for="option4">Option:</label>
+    <input type="text" id="option4" name="option4">
+    <br><br>
+    <button type="submit", class="button-55", id = "create">{{insertButton}}</button>
+
+    <script>
+
+        const createButton = document.getElementById('create');
+        const titleLink = document.getElementById('titleLink');
+
+        //create new question listener
+        createButton.addEventListener('click', function() {
+
+            questionInput = document.getElementById('question').value
+            correctInput = document.getElementById('correct').value
+            option2Input = document.getElementById('option2').value
+            option3Input = document.getElementById('option3').value
+            option4Input = document.getElementById('option4').value
+
+          const qdata = {
+            question: questionInput,
+            correct: correctInput,
+            option2: option2Input,
+            option3: option3Input,
+            option4: option4Input
+        };
+
+         fetch('/insertData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(qdata)
+        }).then(response => {
+            // Handle the response if needed
+            console.log('Data sent successfully');
+            window.location.href = '/create';
+            // Redirect to a new page or perform any other action upon successful submission
+            })
+        });
+
+        titleLink.addEventListener('click', function() {
+            window.location.href = '/home';
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
+</head>
+<body>
+  <div class = "seven">
+   <h1>{{title}}</h1>
+  </div>
+   <h2>{{body}}</h2>       
+
+    <button type="submit" class="button-55" id="play">{{buttonText}}</button>
+    <button type="submit" class="button-55" id="insert">{{insertButton}}</button>
+    <button type="submit" class="button-55" id="logout">{{logoutButton}}</button>
+
+    <script>
+
+        const playButton = document.getElementById('play');
+        const createButton = document.getElementById('insert');
+        const logoutButton = document.getElementById('logout');
+
+        //play button listener
+        playButton.addEventListener('click', function() {
+          window.location.href = '/play';
+        });
+
+        //create new question listener
+        createButton.addEventListener('click', function() {
+          window.location.href = '/create';
+        });
+
+        logoutButton.addEventListener('click', function() {
+          fetch('/logout', {
+            method: 'GET',
+          })
+          .then(response => {
+            if (response.ok) {
+              // Redirect to the login page or perform other actions after successful logout
+              window.location.href = '/login';
+            } else {
+              console.error('Error logging out');
+            }
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+            // Handle network errors or other issues
+          });
+        });
+
+
+
+    </script>
+</body>
+</html>

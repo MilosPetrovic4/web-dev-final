@@ -2,15 +2,20 @@
 <html>
 <head> 
   <title> {{title}} </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="title.css">
 </head>
 <body>
-   <h1>{{title}}</h1>
+   <div class = "seven">
+    <h1>{{title}}</h1>
+   </div>
    <h2>{{body}}</h2>         
 
 
-    <input type="text" id="username" name="username"><br><br>
-    <input type="password" id="psw" name="psw"><br><br>
-    <button type="submit", id = "logInButton">{{buttonText}}</button>
+      <input type="text" id="username" name="username"><br><br>
+      <input type="password" id="psw" name="psw"><br><br>
+      <button type="submit", class="button-55", id = "logInButton">{{buttonText}}</button>
+  
 
    <script>
 
@@ -29,8 +34,16 @@
             headers: {
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id, psw })
-          });
+            body: JSON.stringify({ 
+              name: id, 
+              password: psw  
+              })
+          }) .then(response => {
+        
+              if (response.ok) { //check response
+                  window.location.href = '/home';
+              } 
+          })
     });
 
     </script>

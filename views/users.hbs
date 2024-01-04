@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title> {{title}} </title>
+  <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 3px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+   <h1>{{title}}</h1>
+
+  <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Access</th>
+                <th>Solved</th>
+                <th>Failed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+                <tr>
+                    <td>{{ username }}</td>
+                    <td>{{ password }}</td>
+                    <td>{{ access }}</td>
+                    <td>{{ correct }}</td>
+                    <td>{{ incorrect }}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>  
+
+
+</body>
+</html>
